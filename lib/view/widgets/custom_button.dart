@@ -1,6 +1,5 @@
 import 'package:e_commerce_app/constance.dart';
 import 'package:e_commerce_app/view/widgets/custom_text.dart';
-import 'package:e_commerce_app/view/widgets/custom_text_fiekd.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {

@@ -1,7 +1,9 @@
 import 'package:e_commerce_app/constance.dart';
+import 'package:e_commerce_app/view/view_auth/forgot_password_screen.dart';
+import 'package:e_commerce_app/view/view_auth/register_screen.dart';
 import 'package:e_commerce_app/view/widgets/custom_button.dart';
 import 'package:e_commerce_app/view/widgets/custom_text.dart';
-import 'package:e_commerce_app/view/widgets/custom_text_fiekd.dart';
+import 'package:e_commerce_app/view/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -10,7 +12,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(elevation: 0.0, backgroundColor: Colors.white),
+      appBar: PreferredSize(preferredSize: Size.fromHeight(10.0), child: AppBar(elevation: 0.0, backgroundColor: Colors.white, automaticallyImplyLeading: false,)),
       body: Padding(
         padding: const EdgeInsets.only(top: 50, right: 20, left: 20),
         child: Column(
@@ -23,12 +25,31 @@ class LoginScreen extends StatelessWidget {
                 CustomText(text: "Sign UP", color: primaryColor, fontsize: 18),
               ],
             ),
-            CustomText(text: "sign in to continue", color: Colors.grey, fontsize: 14,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomText(text: "sign in to continue", color: Colors.grey, fontsize: 14,),
+                CustomButton(
+                    OnPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Register()));
+                    },
+                    text: "Create account")
+              ],
+            ),
             SizedBox(height: 20,),
             CustomTextField(text: "Email", hint: "example@gmail.com", onSave: (value){}, validator: (value){},),
             SizedBox(height: 10,),
             CustomTextField(text: "Password", hint: "*******", onSave: (value){}, validator: (value){},),
-            CustomText(text: "Forgot Password?", fontsize: 14, color: Colors.grey, alignment: Alignment.topRight,),
+            TextButton(
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPasswordScreen()));
+                },
+                child: CustomText(
+                  text: "Forgot your password?",
+                  color: Colors.grey,
+                  alignment: Alignment.topRight,
+                  fontsize: 14,)
+            ),
             SizedBox(height: 10,),
             CustomButton(OnPressed: (){}, text: "SIGN IN"),
 
